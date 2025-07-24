@@ -16,10 +16,19 @@ function createGrid(gridSize) {
       const gridBox = document.createElement('div');
       gridBox.className = "grid-box";
       gridRow.appendChild(gridBox);
-      gridBox.addEventListener("mouseover", (e) => gridBox.style.backgroundColor = "white");
+      gridBox.addEventListener("mouseover", (e) => gridBox.style.backgroundColor = getRandomColor());
     }
     gridContainer.appendChild(gridRow);
   }
+}
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
 function resetGrid() {
