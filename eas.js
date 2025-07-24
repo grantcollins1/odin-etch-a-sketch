@@ -39,8 +39,10 @@ function getRandomColor() {
 }
 
 function resetGrid() {
-  let gridSize = 16;
+  let gridSize = 101;
+  while (gridSize > 100 || gridSize < 1) {
     gridSize = Number(prompt("Choose a grid size 1-100:"));
+  }
     const gridContainer = projContainer.querySelector('.grid-container');
     while (gridContainer.firstChild) {
       gridContainer.removeChild(gridContainer.lastChild);
