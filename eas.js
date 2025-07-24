@@ -15,8 +15,15 @@ function createGrid(gridSize) {
     for (let i = 0; i < gridSize; i++) {
       const gridBox = document.createElement('div');
       gridBox.className = "grid-box";
+      gridBox.style.backgroundColor = getRandomColor();
+      gridBox.style.opacity = 0;
       gridRow.appendChild(gridBox);
-      gridBox.addEventListener("mouseover", (e) => gridBox.style.backgroundColor = getRandomColor());
+      gridBox.addEventListener("mouseover", (e) => {
+        let currentOpacity = parseFloat(getComputedStyle(gridBox).opacity);
+        if (currentOpacity < 1) {
+          gridBox.style.opacity = (currentOpacity + 0.1).toString();
+        }
+      });
     }
     gridContainer.appendChild(gridRow);
   }
